@@ -60,17 +60,7 @@ And In the front file where we implement jquery table lookes like this:
                 },
                 {
                     data: 'email',
-                },
-                {
-                    'bSortable': false,
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return '<input type="button" id="' + row.id +
-                            '" class="btn btn-warning" value="Edit"></input> ' +
-                            ' <input type="button"  id="' + row.id +
-                            '" class="btn btn-danger" value="Delete"></input>';
-                    }
-                },
+                }
             ],
         });
     });
