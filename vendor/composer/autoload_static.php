@@ -51,8 +51,8 @@ class ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4
         ),
         'V' => 
         array (
-            'Viveksingh\\DynamicDatatable\\Tests\\' => 34,
-            'Viveksingh\\DynamicDatatable\\' => 28,
+            'Viveksingh\\Tests\\' => 17,
+            'Viveksingh\\' => 11,
         ),
         'T' => 
         array (
@@ -183,11 +183,11 @@ class ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Viveksingh\\DynamicDatatable\\Tests\\' => 
+        'Viveksingh\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'Viveksingh\\DynamicDatatable\\' => 
+        'Viveksingh\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -337,8 +337,8 @@ class ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (

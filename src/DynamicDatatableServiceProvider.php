@@ -1,6 +1,6 @@
 <?php
 
-namespace Viveksingh\DynamicDatatable;
+namespace Viveksingh;
 
 use Illuminate\Support\ServiceProvider;
 
