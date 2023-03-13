@@ -22,21 +22,21 @@ class DynamicDatatable
         Self::$start = $request->start;
         Self::$length = $request->length;
         Self::$search_text = !empty($request->search['value']) ? $request->search['value'] : null;
-        Self::$table = $table_name == null ? $table_name : $request->table_name;
+        Self::$table = !empty($table_name) ? $table_name : $request->table_name;
 
-        foreach ($request->columns as $data) {
-            if ($data['searchable'] == 'true' && !empty($data['data'])) {
+        foreach ($request->columns as $data){
+            if($data['searchable'] == 'true' && !empty($data['data'])){
                 Self::$search_keys[] = $data['data'];
             }
-            if ($data['orderable'] == 'true' && !empty($data['data'])) {
+            if($data['orderable'] == 'true' && !empty($data['data'])){
                 Self::$orderable_keys[] = $data['data'];
             }
-            if (!empty($data['data'])) {
+            if(!empty($data['data'])){
                 Self::$column_names[] = $data['data'];
             }
         }
-
-        foreach ($request->order as $order) {
+        
+        foreach ($request->order as $order){
             Self::$order_columns[Self::$column_names[$order['column']]] = $order['dir']; //keys[column_name[id]] = [desc/asc]
         }
 
@@ -45,9 +45,9 @@ class DynamicDatatable
             $users->orderBy($key, $value);
         }
 
-        if (!empty(Self::$search_text)) {
+        if(!empty(Self::$search_text)) {
             foreach (Self::$search_keys as $key) {
-                $users->orWhere($key, 'like', "%" . Self::$search_text . "%");
+                $users->orWhere($key, 'like', "%".Self::$search_text."%");
             }
         }
         $total = $users->count();
@@ -59,4 +59,6 @@ class DynamicDatatable
             'recordsFiltered' => $total,
         ]);
     }
+
+
 }
