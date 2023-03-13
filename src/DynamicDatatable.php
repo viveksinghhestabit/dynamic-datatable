@@ -37,12 +37,17 @@ class DynamicDatatable
         }
         
         foreach ($request->order as $order){
-            Self::$order_columns[Self::$column_names[$order['column']]] = $order['dir']; //keys[column_name[id]] = [desc/asc]
+            if(count(Self::$column_names) > $order['column']){
+                Self::$order_columns[Self::$column_names[$order['column']]] = $order['dir']; //keys[column_name[id]] = [desc/asc]
+            }
         }
 
-        $users = DB::table(Self::$table)->select(Self::$column_names);
-        foreach (Self::$order_columns as $key => $value) {
-            $users->orderBy($key, $value);
+        $users = DB::table(Self::$table);
+        
+        if(!empty(Self::$order_columns)){
+            foreach (Self::$order_columns as $key => $value) {
+                $users->orderBy($key, $value);
+            }
         }
 
         if(!empty(Self::$search_text)) {
@@ -51,14 +56,14 @@ class DynamicDatatable
             }
         }
         $total = $users->count();
-        $fetchData = $users->limit(Self::$length)->offset(Self::$start)->get();
-        //Return data to datatable
+        $fetchData = $users->when((Self::$length > 0), function ($query) {
+            return $query->offset(Self::$start)->limit(Self::$length);
+        })->get();
+
         return response()->json([
             'data' => $fetchData,
             'recordsTotal' => $total,
             'recordsFiltered' => $total,
         ]);
     }
-
-
 }
