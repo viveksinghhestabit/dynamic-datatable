@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'viveksingh/dynamic-datatable',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '10e64592d32316edf938d08f570fede7449bebcd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -313,15 +313,6 @@
                 0 => '*',
             ),
         ),
-        'laravel/database' => array(
-            'pretty_version' => '8.83.0',
-            'version' => '8.83.0.0',
-            'reference' => 'ce7a3de3ea0f577fa4fa097bb9f7d779068e4a07',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../laravel/database',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'laravel/framework' => array(
             'pretty_version' => 'v8.83.27',
             'version' => '8.83.27.0',
@@ -443,7 +434,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'opis/closure' => array(
             'pretty_version' => '3.6.3',
@@ -634,8 +625,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -652,15 +643,6 @@
             'provided' => array(
                 0 => '1.0',
             ),
-        ),
-        'psy/psysh' => array(
-            'pretty_version' => 'v0.10.12',
-            'version' => '0.10.12.0',
-            'reference' => 'a0d9981aa07ecfcbea28e4bfa868031cca121e7d',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../psy/psysh',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
             'pretty_version' => '3.0.3',
@@ -1167,9 +1149,9 @@
             'dev_requirement' => false,
         ),
         'viveksingh/dynamic-datatable' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '10e64592d32316edf938d08f570fede7449bebcd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

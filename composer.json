@@ -17,8 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0",
-        "laravel/database": "^8.83"
+        "laravel/framework": "^8.75"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
