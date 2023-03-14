@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf179fc031799d78f117d65da64992cca
+class ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -51,8 +51,8 @@ class ComposerStaticInitf179fc031799d78f117d65da64992cca
         ),
         'V' => 
         array (
-            'Viveksingh\\DynamicDatatable\\Tests\\' => 34,
-            'Viveksingh\\DynamicDatatable\\' => 28,
+            'Viveksingh\\Tests\\' => 17,
+            'Viveksingh\\' => 11,
         ),
         'T' => 
         array (
@@ -183,11 +183,11 @@ class ComposerStaticInitf179fc031799d78f117d65da64992cca
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Viveksingh\\DynamicDatatable\\Tests\\' => 
+        'Viveksingh\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'Viveksingh\\DynamicDatatable\\' => 
+        'Viveksingh\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -1234,10 +1234,10 @@ class ComposerStaticInitf179fc031799d78f117d65da64992cca
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf179fc031799d78f117d65da64992cca::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf179fc031799d78f117d65da64992cca::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitf179fc031799d78f117d65da64992cca::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitf179fc031799d78f117d65da64992cca::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0ad1bc8d1281489917479f1bb03fabb4::$classMap;
 
         }, null, ClassLoader::class);
     }
