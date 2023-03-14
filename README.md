@@ -2,8 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/viveksingh/dynamic-datatable.svg?style=flat-square)](https://packagist.org/packages/viveksingh/dynamic-datatable)
 [![Total Downloads](https://img.shields.io/packagist/dt/viveksingh/dynamic-datatable.svg?style=flat-square)](https://packagist.org/packages/viveksingh/dynamic-datatable)
-![GitHub Actions](https://github.com/viveksingh/dynamic-datatable/actions/workflows/main.yml/badge.svg)
-
 This Laravel package is a useful tool that allows developers to easily create and manage dynamic data tables in their Laravel applications. With this package, you can quickly generate dynamic tables that are fully customizable and support a variety of data types, including text, numbers, dates, and more.
 
 The package offers a range of features to help you build powerful data tables with minimal effort. For example, you can sort and filter data, paginate tables, add custom columns.
