@@ -1,6 +1,6 @@
 <?php
 
-namespace Viveksingh;
+namespace Viveksingh\DynamicDatatable;
 
 use Illuminate\Support\Facades\DB;
 
@@ -25,30 +25,24 @@ class DynamicDatatable
         Self::$table = !empty($table_name) ? $table_name : $request->table_name;
 
         foreach ($request->columns as $data){
-            if($data['searchable'] === 'true'){
-                Self::$search_keys[] = !empty($data['name']) ? $data['name'] : $data['data'];
+            if($data['searchable'] == 'true' && !empty($data['data'])){
+                Self::$search_keys[] = $data['data'];
             }
-            if($data['orderable'] === 'true'){
-                Self::$orderable_keys[] = !empty($data['name']) ? $data['name'] : $data['data'];
+            if($data['orderable'] == 'true' && !empty($data['data'])){
+                Self::$orderable_keys[] = $data['data'];
             }
-            if(!empty($data['name']) || !empty($data['data'])){
-                Self::$column_names[] = !empty($data['name']) ? $data['name'] : $data['data'];
+            if(!empty($data['data'])){
+                Self::$column_names[] = $data['data'];
             }
         }
-
+        
         foreach ($request->order as $order){
             if(count(Self::$column_names) > $order['column']){
                 Self::$order_columns[Self::$column_names[$order['column']]] = $order['dir']; //keys[column_name[id]] = [desc/asc]
             }
         }
 
-        $users = DB::table(Self::$table)->select(Self::$column_names);
-
-        if($request->has('joins')){
-            foreach ($request->joins as $join){
-                $users->join($join['table'], $join['on'], '=', $join['to']);
-            }
-        }
+        $users = DB::table(Self::$table);
         
         if(!empty(Self::$order_columns)){
             foreach (Self::$order_columns as $key => $value) {
@@ -58,8 +52,7 @@ class DynamicDatatable
 
         if(!empty(Self::$search_text)) {
             foreach (Self::$search_keys as $key) {
-                if(!empty($key))
-                    $users->orWhere($key, 'like', "%".Self::$search_text."%");
+                $users->orWhere($key, 'like', "%".Self::$search_text."%");
             }
         }
         $total = $users->count();
