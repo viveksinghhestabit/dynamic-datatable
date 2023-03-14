@@ -16,6 +16,13 @@ class DynamicDatatable
     protected static $start = 0;
     protected static $length = 10;
 
+    /**
+     * @Dev table function is used to fetch data from database table
+     * @param Request objects
+     * @param table_name (optional) is table name to fetch data from 
+     * @param table_name parameter shall be used to override table name from request
+     * @return json response
+     */
     public static function table($request, $table_name = null)
     {
         //Set global variables for database
@@ -42,29 +49,34 @@ class DynamicDatatable
             }
         }
 
-        $users = DB::table(Self::$table)->select(Self::$column_names);
+        $query = DB::table(Self::$table)->select(Self::$column_names);
 
         if($request->has('joins')){
             foreach ($request->joins as $join){
-                $users->join($join['table'], $join['on'], '=', $join['to']);
+                if(array_key_exists('type', $join) && $join['type'] == 'left')
+                    $query->leftJoin($join['table'], $join['on'], '=', $join['to']);
+                else if(array_key_exists('type', $join) && $join['type'] == 'right')
+                    $query->rightJoin($join['table'], $join['on'], '=', $join['to']);
+                else
+                    $query->join($join['table'], $join['on'], '=', $join['to']);
             }
         }
         
         if(!empty(Self::$order_columns)){
             foreach (Self::$order_columns as $key => $value) {
-                $users->orderBy($key, $value);
+                $query->orderBy($key, $value);
             }
         }
 
         if(!empty(Self::$search_text)) {
             foreach (Self::$search_keys as $key) {
                 if(!empty($key))
-                    $users->orWhere($key, 'like', "%".Self::$search_text."%");
+                    $query->orWhere($key, 'like', "%".Self::$search_text."%");
             }
         }
 
-        $total = $users->count();
-        $fetchData = $users->when((Self::$length > 0), function ($query) {
+        $total = $query->count();
+        $fetchData = $query->when((Self::$length > 0), function ($query) {
             return $query->offset(Self::$start)->limit(Self::$length);
         })->get();
 

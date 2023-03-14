@@ -37,7 +37,7 @@
             serverSide: true,
             paging: true,
             ajax: {
-                url: "{{ route('yajra') }}",
+                url: "{{ route('admin.getUse') }}",
                 data: {
 
                     table_name: 'posts',
@@ -50,7 +50,8 @@
                         {
                             table: 'comments',
                             on: 'comments.post_id',
-                            to: 'posts.id'
+                            to: 'posts.id',
+                            type: 'left'    //optional join type
                         }
                     ],
                     
