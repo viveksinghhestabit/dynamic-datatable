@@ -116,9 +116,7 @@ class DynamicDatatable
         $searched = false;
         if (!empty(Self::$search_text)) {
             $collection->filter(function ($value) use (&$filteredCollection) {
-                $value = json_decode(json_encode($value), true);    //convert object to array
-
-                array_walk($value , function ($element, $key) use (&$filteredCollection, $value) {
+                array_walk_recursive($value , function ($element, $key) use (&$filteredCollection, $value) {
                     if (in_array($key, Self::$search_keys) && stripos($element, Self::$search_text) !== false) {
                         // push if key exists in search keys and value contains search text
                         $filteredCollection[] = (object)$value;
